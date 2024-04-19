@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'> 
+    <title>Movie App</title>
+  </head>
+  <body style="font-family: 'poppins';">
+    <header>
+
+      <div class="header_content">
+        
+        <div class="user_name">
+          <span id="loggedInUserName" class="user-name"></span>
+        </div>
+
+        <a href="homepage.html"><h2 style="color: white; right: 25rem; position: relative;"> MovieStop</h2></a>
+
+      <form id="form">
+        <input type="text" id="search" class="search" placeholder="Search">
+      </form>
+
+  </div>
+      
+</header>
+
+    <main id="main"></main>
+
+    <script src="script.js"></script>
+
+
+
+    <script>
+      window.onload = function() {
+          // Retrieve the name from the URL query parameter
+          const urlParams = new URLSearchParams(window.location.search);
+          const name = urlParams .get('name');
+          
+          // Update the content of the element with the user's name
+          const loggedInUserNameElement = document.getElementById('loggedInUserName');
+          if (name) {
+              loggedInUserNameElement.textContent = `Welcome, ${name}!`;
+          } else {
+              loggedInUserNameElement.textContent = '';
+          }
+      };
+  </script>
+
+  <Style>
+    .header_content{
+      display: flex!important;
+      flex-direction: row;
+      justify-content: space-between!important;
+      align-items: center;
+    }
+    .user_name{
+      position: relative;
+    right: 55rem;
+      padding: 10px;
+      
+    }
+    #loggedInUserName{
+      font-size: large;
+      color: white;
+    }
+
+  </Style>
+  </body>
+</html>

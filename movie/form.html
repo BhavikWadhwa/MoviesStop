@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>  
+    <style>
+        .major_box {
+            display:flex;
+            justify-content: center;
+            padding: 4rem;
+            height: 30rem;
+            margin-top: 4rem;
+        }
+        .minor_box1 {
+            background-color: #69a6ff;
+            width: 30rem;
+        }
+        .minor_box1_content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .minor_box2 {
+            background-color: #373b69;
+            width: 32rem;
+            flex-direction: column;
+            align-items: center;
+            display: flex;
+        }
+        .minor_box2_content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            background-color: white;
+            margin-top: -26px;
+        }
+        form {
+            display: none; 
+            flex-direction: column;
+            padding:16px 90px;
+        }
+        .butts {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 1rem;
+            background-color: #f8f8f8;
+            padding:12px;
+            gap: 2rem;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            width: 20rem;
+            justify-content: center;
+            padding-bottom: 24px;
+            margin-top: 20px;
+            padding-top: 15px;
+        }
+        .inputField {
+            border: none;
+            border-bottom: 1px solid #e1e8ec;
+            background-color: transparent;
+            font-size: 13px;
+            padding: 5px;
+        }
+        .inputField:focus {
+            outline: none;
+        }
+        label{
+            font-size: 15px;
+        }
+        #loginbutt{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 700;
+            color: #8d9498;
+        }
+        
+        #signupbutt{
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 17px;
+            color: #8d9498;
+            font-weight: 700;
+        }
+        #loginbutt:hover{
+            color: #0164a5;
+        } 
+        #signupbutt:hover{
+            color:#0164a5;
+        }
+        .submit{
+            padding: 10px 17px 10px 17px ;
+            background-color: #22254b;
+            color: white;
+            border-radius:30px ;
+            border-color: #F9F9FEBF;
+            border-width: 3px 3px 3px 3px; 
+            border-style: solid;
+            fill: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform .2s;
+            letter-spacing: 1px;
+        }
+        .submit:hover{
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body style="background-image: url(wave-haikei\ \(1\).svg); background-repeat: no-repeat;  background-size: 100%; font-family: poppins;">
+
+<div class="major_box">
+    <div class="minor_box1">
+        <div class="minor_box1_content">
+            <img src="wallpaperflare.com_wallpaper.jpg" height="480px" width="100%" style="object-fit: cover;">
+        </div>            
+    </div>
+
+    <div class="minor_box2">
+        <div class="butts">
+            <button id="loginbutt" class="loginbutt">Log In</button>
+            <button id="signupbutt" class="signupbutt">Sign Up</button>
+        </div>
+        <div class="minor_box2_content">
+            <br>
+            <form id="loginForm">
+                <label for="loginFullName">Full Name:</label>
+                <input type="text" id="loginFullName" name="loginFullName" class="inputField"><br>
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" name="loginEmail" class="inputField"><br>
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="loginPassword" class="inputField"><br>
+                
+                <button type="submit" id="submitLogin" class="submit">Login</button>
+            </form>
+            
+            <form id="signupForm">
+                <label for="signupFullName">Full Name:</label>
+                <input type="text" id="signupFullName" name="signupFullName" class="inputField"><br>
+                <label for="signupEmail">Email:</label>
+                <input type="email" id="signupEmail" name="signupEmail" class="inputField"><br>
+                <label for="signupPhone">Phone Number:</label>
+                <input type="tel" id="signupPhone" name="signupPhone" class="inputField"><br>
+                <label for="signupPassword">Password:</label>
+                <input type="password" id="signupPassword" name="signupPassword" class="inputField"><br>
+                
+                <button type="submit" id="submitSignup" class="submit">Signup</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const login_button = document.getElementById("loginbutt");
+    const signup_button = document.getElementById("signupbutt");
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+
+    login_button.addEventListener("click", () => {
+        loginForm.style.display = "flex";
+        signupForm.style.display = "none";
+        loginForm.style.flexDirection = "column";
+    });
+
+    signup_button.addEventListener("click", () => {
+        loginForm.style.display = "none";
+        signupForm.style.display = "flex";
+        signupForm.style.flexDirection = "column";
+    });
+
+    // Event listener for login form submission
+    loginForm.addEventListener("submit", (e) => {
+        e.preventDefault(); // Prevent default form submission behavior
+
+        // Getting input field values
+        const fullName = document.getElementById("loginFullName").value.trim();
+        const email = document.getElementById("loginEmail").value.trim();
+        const password = document.getElementById("loginPassword").value.trim();
+
+        // Form validation
+        if (fullName === '' || email === '' || password === '') {
+            alert("Please fill in all fields.");
+        } else {
+            alert(`You are now logged in as ${fullName}`);
+            window.location.href = `mainpage.html?name=${fullName}`;
+        }
+    });
+
+    // Event listener for signup form submission
+    signupForm.addEventListener("submit", (e) => {
+        e.preventDefault(); // Prevent default form submission behavior
+
+        // Getting input field values
+        const fullName = document.getElementById("signupFullName").value.trim();
+        const email = document.getElementById("signupEmail").value.trim();
+        const phone = document.getElementById("signupPhone").value.trim();
+        const password = document.getElementById("signupPassword").value.trim();
+
+        // Form validation
+        if (fullName === '' || email === '' || phone === '' || password === '') {
+            alert("Please fill in all fields.");
+        } else {
+            alert(`You are now signed up as ${fullName}`);
+            window.location.href = `mainpage.html?name=${fullName}`;
+        }
+    });
+</script>
+</body>
+</html>
